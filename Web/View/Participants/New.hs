@@ -6,7 +6,7 @@ newtype NewView = NewView { error :: Maybe Text }
 instance View NewView where
     html NewView {..} = [hsx|
         <div class="container mt-3">
-            <h3 class="text-center mb-5">Boom</h3>
+            <h3 class="text-center mb-5">Silent Zoom</h3>
             <div class="d-flex justify-content-center">
                 {renderNameForm error}
             </div>
