@@ -11,4 +11,5 @@ data StaticController = WelcomeAction deriving (Eq, Show, Data)
 
 data RoomController
     = ShowRoomAction
+      | CreateMessageAction
     deriving (Eq, Show, Data)

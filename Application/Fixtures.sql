@@ -12,3 +12,12 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 
+SET SESSION AUTHORIZATION DEFAULT;
+
+ALTER TABLE public.messages DISABLE TRIGGER ALL;
+
+
+
+ALTER TABLE public.messages ENABLE TRIGGER ALL;
+
+

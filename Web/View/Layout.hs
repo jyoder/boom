@@ -50,16 +50,17 @@ scripts = [hsx|
         <script src="/helpers.js"></script>
         <script src="/ihp-auto-refresh.js"></script>
         <script src="/languages.js"></script>
-        <script src="/capture-speech.js"></script>
+        <script src="/transcriber.js"></script>
+        <script src="/app.js"></script>
     |]
 
 metaTags :: Html
 metaTags = [hsx|
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta property="og:title" content="App"/>
+    <meta property="og:title" content="Boom!"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="TODO"/>
-    <meta property="og:description" content="TODO"/>
+    <meta property="og:url" content=""/>
+    <meta property="og:description" content="A low-bandwidth replacement for Zoom."/>
     {autoRefreshMeta}
 |]
