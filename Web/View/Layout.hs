@@ -17,7 +17,7 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
     {stylesheets}
     {scripts}
 
-    <title>App</title>
+    <title>Silent Zoom</title>
 </head>
 <body>
     <div class="container mt-4">

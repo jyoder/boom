@@ -33,6 +33,7 @@ instance Controller RoomController where
             Just self -> do
                 messageRows <- fetchMessageRows
                 let senders = buildSender <$> messageRows
+                let presenter = findPresenter senders
                 render ShowView {..}
             Nothing -> redirectTo NewParticipantAction
 
@@ -49,6 +50,9 @@ cleanGarbage = do
 cleanGarbage' :: (?modelContext :: ModelContext) => IO ()
 cleanGarbage' =
     sqlExec "delete from messages where created_at < now() - interval '5 minutes'" () >> pure ()
+
+findPresenter :: [Sender] -> Maybe Sender
+findPresenter = find (\s -> get #name s == "John Yoder (Presenter)")
 
 buildSender :: MessageRow -> Sender
 buildSender messageRow =
