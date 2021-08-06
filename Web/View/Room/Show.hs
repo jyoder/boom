@@ -1,8 +1,9 @@
 module Web.View.Room.Show where
 import Web.View.Prelude
 
-newtype ShowView = ShowView {
-    senders :: [Sender]
+data ShowView = ShowView {
+      self :: !Text
+    , senders :: [Sender]
 }
 
 data Sender = Sender {
@@ -18,6 +19,7 @@ instance View ShowView where
                 <h3 class="text-center mb-5">Boom</h3>
                 {forEach senders renderSender}
                 <div id="url" style="display: none;">{urlTo $ CreateMessageAction}</div>
+                <div id="sender" style="display: none;">{self}</div>
             </div>
         </main>
     |]

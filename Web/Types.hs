@@ -13,3 +13,8 @@ data RoomController
     = ShowRoomAction
       | CreateMessageAction
     deriving (Eq, Show, Data)
+
+data ParticipantsController
+    = NewParticipantAction
+    | CreateParticipantAction
+    deriving (Eq, Show, Data)

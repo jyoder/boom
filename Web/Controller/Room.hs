@@ -28,9 +28,13 @@ instance FromRow MessageRow where
 
 instance Controller RoomController where
     action ShowRoomAction = autoRefresh do
-        messageRows <- fetchMessageRows
-        let senders = buildSender <$> messageRows
-        render ShowView {..}
+        participantName <- getSession "participantName"
+        case participantName of
+            Just self -> do
+                messageRows <- fetchMessageRows
+                let senders = buildSender <$> messageRows
+                render ShowView {..}
+            Nothing -> redirectTo NewParticipantAction
 
     action CreateMessageAction = do
         cleanGarbage
@@ -58,9 +62,8 @@ buildMessage :: (?context :: ControllerContext) => Message -> Message
 buildMessage message = 
     let words = param @Text "words" |> capitalized in
         message 
-            |> fill @["sender", "isFinal"] 
+            |> fill @'["sender", "isFinal"] 
             |> set #words words
-            |> set #sender "John Yoder"
 
 capitalized :: Text -> Text
 capitalized text = text |> Text.strip |> Text.unpack |> capitalized' |> Text.pack

@@ -6,3 +6,5 @@ import Web.Types
 -- Generator Marker
 instance AutoRoute StaticController
 instance AutoRoute RoomController
+instance AutoRoute ParticipantsController
+
