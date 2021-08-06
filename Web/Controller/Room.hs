@@ -78,4 +78,4 @@ fetchMessageRows = do
     sqlQuery messageRowsQuery ()
 
 messageRowsQuery :: Query
-messageRowsQuery = "with ranked_messages as (select created_at, sender, is_final, words, row_number() over (partition by sender order by created_at desc) as rn from messages) select * from ranked_messages where rn = 1 order by created_at desc;"
+messageRowsQuery = "with ranked_messages as (select created_at, sender, is_final, words, row_number() over (partition by sender order by created_at desc) as rn from messages) select * from ranked_messages where rn = 1 order by sender asc;"
